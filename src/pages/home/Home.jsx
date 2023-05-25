@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./home.scss";
 import { MdOutlineSportsEsports, MdLocalMovies } from "react-icons/md";
-import { GiTempleGate } from "react-icons/gi";
 import { GiSoundOn } from "react-icons/gi";
 import { RiMovie2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -16,15 +15,14 @@ const Home = () => {
             <div className="hero__section">
                 <div className="container">
                     <div className="hero__items">
-                        <div
-                            className={`hero__item ${
-                                eventType === "All" && "active"
-                            }`}
-                            onClick={() => setEventType("All")}
-                        >
-                            <p className="hero__item--title">All</p>
-                            <GiTempleGate size={25} />
-                        </div>
+                        <Link to={"/"}>
+                            <div
+                                className={`hero__item  active
+                            `}
+                            >
+                                <p className="hero__item--title">Home</p>
+                            </div>
+                        </Link>
                         <div
                             className={`hero__item ${
                                 eventType === "Sports" && "active"
