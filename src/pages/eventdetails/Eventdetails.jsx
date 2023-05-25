@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./eventdetails.scss";
 import { ButtonContext } from "../../context/Context";
 import { useParams } from "react-router-dom";
@@ -6,7 +6,9 @@ import { useParams } from "react-router-dom";
 const Eventdetails = () => {
     const { eventList } = useContext(ButtonContext);
     const { event, name } = useParams();
+    const [selectedseat, setSelectedSeat] = useState("");
     const selectedEvent = eventList[event].find((item) => item.type === name);
+    console.log(selectedseat);
 
     const generateSeatNumber = (row, col) => {
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -16,8 +18,9 @@ const Eventdetails = () => {
     };
 
     const renderSeatPlan = () => {
-        const rows = 8; // Number of rows
-        const cols = 25; // Number of columns
+        // Number of rows
+        const cols = 15; // Number of columns
+        const rows = (selectedEvent.ticketsAvailable / cols).toFixed(0);
 
         const seatPlan = [];
 
@@ -26,13 +29,17 @@ const Eventdetails = () => {
             for (let col = 0; col < cols; col++) {
                 const seatNumber = generateSeatNumber(row, col);
                 seatRow.push(
-                    <div key={seatNumber} className="seat">
+                    <div
+                        key={seatNumber}
+                        className="seat"
+                        onClick={(e) => setSelectedSeat(seatNumber)}
+                    >
                         {seatNumber}
                     </div>
                 );
             }
             seatPlan.push(
-                <div key={row} className="seat-row">
+                <div key={row} className="seat__row">
                     {seatRow}
                 </div>
             );
@@ -41,7 +48,7 @@ const Eventdetails = () => {
         return seatPlan;
     };
     return (
-        <div className="container">
+        <div className="container event__details ">
             {selectedEvent && (
                 <div>
                     <img
@@ -56,9 +63,17 @@ const Eventdetails = () => {
                     <p>Time:{selectedEvent.time}</p>
                     <p>Availableseats:{selectedEvent.ticketsAvailable}</p>
                     <p>Price:{selectedEvent.price}</p>
+                    <p>
+                        Selectd seat:{" "}
+                        <span style={{ color: "green" }}>{selectedseat}</span>
+                    </p>
+                    <button>Book now</button>
                 </div>
             )}
-            <div className="seat__chart">{renderSeatPlan()}</div>
+            <div className="seat__chart">
+                <h2>Seat Plan</h2>
+                {renderSeatPlan()}
+            </div>
         </div>
     );
 };

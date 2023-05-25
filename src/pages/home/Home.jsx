@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 import { ButtonContext } from "../../context/Context";
 import Search from "../../components/search/Search";
 import EventList from "../../components/eventlist/EventList";
+import Event from "../../components/event/Event";
 const Home = () => {
-    const { eventType, setEventType, eventList } = useContext(ButtonContext);
+    const { eventType, setEventType, searchevent } = useContext(ButtonContext);
     return (
         <>
             <div className="hero__section">
@@ -54,7 +55,9 @@ const Home = () => {
 
                     <div className="hero__bottom">
                         <h2>Book your ticket easy and fast way.</h2>
-                        <Link className="hero__login--btn">Login/Register</Link>
+                        <Link className="hero__login--btn" to={"/login"}>
+                            Login/Register
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -62,6 +65,7 @@ const Home = () => {
             <div className="search__section container">
                 <Search eventType={eventType} />
             </div>
+            {searchevent && <Event />}
             <div className="event__section container">
                 <h2>All Events</h2>
                 <EventList eventType={"Sports"} />

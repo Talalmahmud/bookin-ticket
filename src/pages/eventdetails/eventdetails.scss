@@ -1,23 +1,44 @@
-.seat-plan {
+.event__details {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     padding: 20px;
-}
+    font-weight: bold;
+    @media (max-width: 780px) {
+        flex-direction: column;
+    }
+    button {
+        padding: 4px 8px;
+        background-color: rgb(15, 15, 77);
+        color: wheat;
+        border-radius: 5px;
+    }
 
-.seat-row {
-    display: flex;
-    justify-content: center;
-}
+    .seat__chart {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 20px;
 
-.seat {
-    width: 30px;
-    height: 30px;
-    margin: 5px;
-    background-color: #eee;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
+        .seat__row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .seat {
+                width: 30px;
+                height: 30px;
+                overflow-y: auto;
+                margin: 5px;
+                background-color: #eee;
+                border: 1px solid #ccc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                font-size: 12px;
+            }
+        }
+    }
 }

@@ -11,8 +11,18 @@ import Eventdetails from "./pages/eventdetails/Eventdetails";
 
 function App() {
     const [eventType, setEventType] = useState("Sports");
+    const [searchevent, setSearchevent] = useState("");
+    console.log(searchevent);
     return (
-        <ButtonContext.Provider value={{ eventType, setEventType, eventList }}>
+        <ButtonContext.Provider
+            value={{
+                eventType,
+                setEventType,
+                eventList,
+                searchevent,
+                setSearchevent,
+            }}
+        >
             <BrowserRouter>
                 <Navbar />
                 <Routes>

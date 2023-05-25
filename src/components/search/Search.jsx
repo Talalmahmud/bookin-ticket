@@ -1,33 +1,50 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ButtonContext } from "../../context/Context";
+import "./search.scss";
 
 const Search = ({ eventType }) => {
-    const { eventList } = useContext(ButtonContext);
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
-    const [type, setType] = useState("");
-    const [location, setLocation] = useState("");
-    const [artist, setArtist] = useState("");
-    console.log(eventType);
+    const { eventList, setSearchevent } = useContext(ButtonContext);
+    // const [date, setDate] = useState("");
+    // const [time, setTime] = useState("");
+    // const [type, setType] = useState("");
+    // const [location, setLocation] = useState("");
+    // const [artist, setArtist] = useState("");
 
     const handleDate = (e) => {
-        setDate(e.target.value);
+        // setDate(e.target.value);
+        setSearchevent(
+            eventList[eventType].find((item) => item.date === e.target.value)
+        );
     };
     const handleTime = (e) => {
-        setTime(e.target.value);
+        // setTime(e.target.value);
+        setSearchevent(
+            eventList[eventType].find((item) => item.time === e.target.value)
+        );
     };
     const handleType = (e) => {
-        setType(e.target.value);
+        // setType(e.target.value);
+        setSearchevent(
+            eventList[eventType].find((item) => item.type === e.target.value)
+        );
     };
     const handleArtist = (e) => {
-        setArtist(e.target.value);
+        // setArtist(e.target.value);
+        setSearchevent(
+            eventList[eventType].find((item) => item.artist === e.target.value)
+        );
     };
     const handleLocation = (e) => {
-        setLocation(e.target.value);
+        // setLocation(e.target.value);
+        setSearchevent(
+            eventList[eventType].find(
+                (item) => item.location === e.target.value
+            )
+        );
     };
 
     return (
-        <div>
+        <div className="search__section">
             <select onChange={handleType}>
                 <option>--Select type--</option>
                 {eventType &&
