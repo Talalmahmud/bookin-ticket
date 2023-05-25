@@ -1,0 +1,17 @@
+.eventlist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    .event_items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        img {
+            border-radius: 10px;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.header__section {
+    width: 100%;
+    background-color: rgb(16, 16, 124);
+    padding: 16px 0px;
+    position: sticky;
+    z-index: 10;
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .header__title {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .btn__login {
+            padding: 4px 6px;
+            background-color: rgb(240, 232, 232);
+            font-size: 18px;
+            border-radius: 5px;
+            outline: none;
+            &:hover {
+                box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+                    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+                    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+            }
+        }
+    }
+}
