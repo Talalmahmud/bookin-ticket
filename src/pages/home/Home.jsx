@@ -10,19 +10,21 @@ import EventList from "../../components/eventlist/EventList";
 import Event from "../../components/event/Event";
 const Home = () => {
     const { eventType, setEventType, searchevent } = useContext(ButtonContext);
+
+    const pageReload = () => {
+        window.location.reload(true);
+    };
     return (
         <>
             <div className="hero__section">
                 <div className="container">
                     <div className="hero__items">
-                        <Link to={"/"}>
-                            <div
-                                className={`hero__item  active
-                            `}
-                            >
-                                <p className="hero__item--title">Home</p>
-                            </div>
-                        </Link>
+                        <div
+                            className={`hero__item `}
+                            onClick={() => pageReload()}
+                        >
+                            <p className="hero__item--title">All</p>
+                        </div>
                         <div
                             className={`hero__item ${
                                 eventType === "Sports" && "active"

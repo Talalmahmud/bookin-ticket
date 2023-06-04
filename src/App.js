@@ -8,11 +8,11 @@ import { ButtonContext } from "./context/Context";
 import { useState } from "react";
 import { eventList } from "./data";
 import Eventdetails from "./pages/eventdetails/Eventdetails";
+import Payment from "./pages/payment/Payment";
 
 function App() {
     const [eventType, setEventType] = useState("Sports");
-    const [searchevent, setSearchevent] = useState("");
-    console.log(searchevent);
+    const [searchevent, setSearchevent] = useState([]);
     return (
         <ButtonContext.Provider
             value={{
@@ -30,6 +30,7 @@ function App() {
                     <Route path="/:event/:name" element={<Eventdetails />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Signup />} />
+                    <Route path="/payment" element={<Payment />} />
                 </Routes>
             </BrowserRouter>
         </ButtonContext.Provider>

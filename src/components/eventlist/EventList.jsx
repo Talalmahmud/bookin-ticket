@@ -8,7 +8,7 @@ const EventList = ({ eventType, ...others }) => {
 
     return (
         <div className="eventlist">
-            <h4>{eventType}</h4>
+            <h3>{eventType}</h3>
             <div className="event_items">
                 {eventList[eventType].map((item, index) => (
                     <Link to={`/${eventType}/${item.type}`} key={index}>

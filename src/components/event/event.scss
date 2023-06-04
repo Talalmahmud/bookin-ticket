@@ -1,0 +1,14 @@
+.single__event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 300px;
+        width: 300px;
+        border-radius: 10px;
+    }
+    p {
+        color: black;
+        font-weight: bold;
+    }
+}

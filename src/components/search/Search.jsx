@@ -3,7 +3,8 @@ import { ButtonContext } from "../../context/Context";
 import "./search.scss";
 
 const Search = ({ eventType }) => {
-    const { eventList, setSearchevent } = useContext(ButtonContext);
+    const { eventList, setSearchevent, searchevent } =
+        useContext(ButtonContext);
     // const [date, setDate] = useState("");
     // const [time, setTime] = useState("");
     // const [type, setType] = useState("");
@@ -13,33 +14,34 @@ const Search = ({ eventType }) => {
     const handleDate = (e) => {
         // setDate(e.target.value);
         setSearchevent(
-            eventList[eventType].find((item) => item.date === e.target.value)
+            eventList[eventType].filter((item) => item.date === e.target.value)
         );
     };
     const handleTime = (e) => {
         // setTime(e.target.value);
         setSearchevent(
-            eventList[eventType].find((item) => item.time === e.target.value)
+            eventList[eventType].filter((item) => item.time === e.target.value)
         );
     };
     const handleType = (e) => {
         // setType(e.target.value);
         setSearchevent(
-            eventList[eventType].find((item) => item.type === e.target.value)
+            eventList[eventType].filter((item) => item.type === e.target.value)
         );
+        console.log(searchevent);
     };
     const handleArtist = (e) => {
         // setArtist(e.target.value);
         setSearchevent(
-            eventList[eventType].find((item) => item.artist === e.target.value)
+            eventList[eventType].filter(
+                (item) => item.artist === e.target.value
+            )
         );
     };
     const handleLocation = (e) => {
         // setLocation(e.target.value);
         setSearchevent(
-            eventList[eventType].find(
-                (item) => item.location === e.target.value
-            )
+            eventList[eventType].filter((item) => item.venue === e.target.value)
         );
     };
 

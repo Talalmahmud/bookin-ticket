@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import "./eventdetails.scss";
 import { ButtonContext } from "../../context/Context";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Eventdetails = () => {
     const { eventList } = useContext(ButtonContext);
     const { event, name } = useParams();
     const [selectedseat, setSelectedSeat] = useState("");
     const selectedEvent = eventList[event].find((item) => item.type === name);
-    console.log(selectedseat);
 
     const generateSeatNumber = (row, col) => {
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,8 +18,9 @@ const Eventdetails = () => {
 
     const renderSeatPlan = () => {
         // Number of rows
-        const cols = 15; // Number of columns
-        const rows = (selectedEvent.ticketsAvailable / cols).toFixed(0);
+        const rows = 20;
+
+        const cols = (selectedEvent.ticketsAvailable / rows).toFixed(0); // Number of columns
 
         const seatPlan = [];
 
@@ -48,31 +48,46 @@ const Eventdetails = () => {
         return seatPlan;
     };
     return (
-        <div className="container event__details ">
-            {selectedEvent && (
-                <div>
-                    <img
-                        src={selectedEvent.imgUrl}
-                        height={400}
-                        width={400}
-                        alt=""
-                    />
-                    <h2>Name:{selectedEvent.name}</h2>
-                    <p>Location:{selectedEvent.venue}</p>
-                    <p>Date:{selectedEvent.date}</p>
-                    <p>Time:{selectedEvent.time}</p>
-                    <p>Availableseats:{selectedEvent.ticketsAvailable}</p>
-                    <p>Price:{selectedEvent.price}</p>
-                    <p>
-                        Selectd seat:{" "}
-                        <span style={{ color: "green" }}>{selectedseat}</span>
-                    </p>
-                    <button>Book now</button>
+        <div className="container details__section">
+            <h2>Book Your Ticket</h2>
+            <div className=" event__details ">
+                {selectedEvent && (
+                    <div>
+                        <img src={selectedEvent.imgUrl} alt="" />
+                        <h2>
+                            Name:<san>{selectedEvent.name}</san>
+                        </h2>
+                        <p>
+                            Location:<span>{selectedEvent.venue}</span>
+                        </p>
+                        <p>
+                            Date:<span>{selectedEvent.date}</span>
+                        </p>
+                        <p>
+                            Time:<span>{selectedEvent.time}</span>
+                        </p>
+                        <p>
+                            Availableseats:
+                            <span>{selectedEvent.ticketsAvailable}</span>
+                        </p>
+                        <p>
+                            Price:<span>{selectedEvent.price}</span>
+                        </p>
+                        <p>
+                            Selected seat:{" "}
+                            <span style={{ color: "green" }}>
+                                {selectedseat}
+                            </span>
+                        </p>
+                        <Link to="/payment">
+                            <button>Book now</button>
+                        </Link>
+                    </div>
+                )}
+                <div className="seat__chart">
+                    <h2>Seat Plan</h2>
+                    {renderSeatPlan()}
                 </div>
-            )}
-            <div className="seat__chart">
-                <h2>Seat Plan</h2>
-                {renderSeatPlan()}
             </div>
         </div>
     );
